@@ -12,3 +12,8 @@ eureka:
 productos:
   json:
     path: /producto1/data/data.json
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

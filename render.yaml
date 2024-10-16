@@ -2,63 +2,60 @@ services:
   - name: eureka-microserv
     type: web
     env: docker
-    dockerfilePath: ./eureka/Dockerfile
+    plan: free
     buildCommand: ""
     startCommand: ""
-    envVars:
-      - key: PORT
-        value: "8761"
+    dockerfilePath: ./eureka/Dockerfile
+    envVars: {}
     healthCheckPath: /actuator/health
-    autoDeploy: true
+    ports:
+      - 8761
 
   - name: gateway-microserv
     type: web
     env: docker
-    dockerfilePath: ./gateway/Dockerfile
+    plan: free
     buildCommand: ""
     startCommand: ""
-    envVars:
-      - key: PORT
-        value: "8080"
-    dependencies:
-      - eureka-microserv
-    autoDeploy: true
+    dockerfilePath: ./gateway/Dockerfile
+    healthCheckPath: /actuator/health
+    envVars: {}
+    ports:
+      - 8080
+
 
   - name: producto1-microserv
     type: web
     env: docker
-    dockerfilePath: ./producto1/Dockerfile
+    plan: free
     buildCommand: ""
     startCommand: ""
-    envVars:
-      - key: PORT
-        value: "8001"
-    dependencies:
-      - eureka-microserv
-    autoDeploy: true
+    dockerfilePath: ./producto1/Dockerfile
+    healthCheckPath: /actuator/health
+    envVars: {}
+    ports:
+      - 8001
 
   - name: producto2-microserv
     type: web
     env: docker
-    dockerfilePath: ./producto2/Dockerfile
+    plan: free
     buildCommand: ""
     startCommand: ""
-    envVars:
-      - key: PORT
-        value: "8002"
-    dependencies:
-      - eureka-microserv
-    autoDeploy: true
+    dockerfilePath: ./producto2/Dockerfile
+    healthCheckPath: /actuator/health
+    envVars: {}
+    ports:
+      - 8002
 
   - name: user-microserv
     type: web
     env: docker
-    dockerfilePath: ./usuario/Dockerfile
+    plan: free
     buildCommand: ""
     startCommand: ""
-    envVars:
-      - key: PORT
-        value: "8003"
-    dependencies:
-      - eureka-microserv
-    autoDeploy: true
+    dockerfilePath: ./usuario/Dockerfile
+    healthCheckPath: /actuator/health
+    envVars: {}
+    ports:
+      - 8003

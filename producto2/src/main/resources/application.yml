@@ -12,3 +12,8 @@ server:
 productos2:
   json:
     path: /producto2/data/data.json
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

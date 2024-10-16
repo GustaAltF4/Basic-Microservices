@@ -13,3 +13,8 @@ server:
 user:
   json:
     path: /usuario/data/data.json
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
