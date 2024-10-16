@@ -1,64 +1,64 @@
 services:
   - name: eureka-microserv
     type: web
-    env:
-      - name: DOCKER
+    env: docker
     dockerfilePath: ./eureka/Dockerfile
-    buildContext: ./eureka
-    healthCheck:
-      type: tcp
-      path: "/actuator/health"
-      interval: 30s
-      timeout: 30s
-      retries: 3
-    plan: free
-    port:
-      port: 8761
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: PORT
+        value: "8761"
+    healthCheckPath: /actuator/health
+    autoDeploy: true
 
   - name: gateway-microserv
     type: web
-    env:
-      - name: DOCKER
+    env: docker
     dockerfilePath: ./gateway/Dockerfile
-    buildContext: ./gateway
-    plan: free
-    port:
-      port: 8080
-    dependsOn:
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: PORT
+        value: "8080"
+    dependencies:
       - eureka-microserv
+    autoDeploy: true
 
   - name: producto1-microserv
     type: web
-    env:
-      - name: DOCKER
+    env: docker
     dockerfilePath: ./producto1/Dockerfile
-    buildContext: ./producto1
-    plan: free
-    port:
-      port: 8001
-    dependsOn:
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: PORT
+        value: "8001"
+    dependencies:
       - eureka-microserv
+    autoDeploy: true
 
   - name: producto2-microserv
     type: web
-    env:
-      - name: DOCKER
+    env: docker
     dockerfilePath: ./producto2/Dockerfile
-    buildContext: ./producto2
-    plan: free
-    port:
-      port: 8002
-    dependsOn:
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: PORT
+        value: "8002"
+    dependencies:
       - eureka-microserv
+    autoDeploy: true
 
   - name: user-microserv
     type: web
-    env:
-      - name: DOCKER
+    env: docker
     dockerfilePath: ./usuario/Dockerfile
-    buildContext: ./usuario
-    plan: free
-    port:
-      port: 8003
-    dependsOn:
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: PORT
+        value: "8003"
+    dependencies:
       - eureka-microserv
+    autoDeploy: true
