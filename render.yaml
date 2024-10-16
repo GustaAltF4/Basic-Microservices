@@ -6,10 +6,11 @@ services:
     buildCommand: ""
     startCommand: ""
     dockerfilePath: ./eureka/Dockerfile
-    envVars: {}
+    envVars:
+    - key: PORT
+      value: 8761
     healthCheckPath: /actuator/health
-    ports:
-      - 8761
+
 
   - name: gateway-microserv
     type: web
@@ -19,9 +20,9 @@ services:
     startCommand: ""
     dockerfilePath: ./gateway/Dockerfile
     healthCheckPath: /actuator/health
-    envVars: {}
-    ports:
-      - 8080
+    envVars:
+    - key: PORT
+      value: 8080
 
 
   - name: producto1-microserv
@@ -32,9 +33,10 @@ services:
     startCommand: ""
     dockerfilePath: ./producto1/Dockerfile
     healthCheckPath: /actuator/health
-    envVars: {}
-    ports:
-      - 8001
+    envVars:
+    - key: PORT
+      value: 8001
+
 
   - name: producto2-microserv
     type: web
@@ -44,9 +46,10 @@ services:
     startCommand: ""
     dockerfilePath: ./producto2/Dockerfile
     healthCheckPath: /actuator/health
-    envVars: {}
-    ports:
-      - 8002
+    envVars:
+    - key: PORT
+      value: 8002
+
 
   - name: user-microserv
     type: web
@@ -56,6 +59,6 @@ services:
     startCommand: ""
     dockerfilePath: ./usuario/Dockerfile
     healthCheckPath: /actuator/health
-    envVars: {}
-    ports:
-      - 8003
+    envVars:
+    - key: PORT
+      value: 8003
