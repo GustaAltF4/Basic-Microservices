@@ -1,8 +1,8 @@
 eureka:
   client:
     service-url:
-      #defaultZone: http://eureka-microserv:8761/eureka
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-microserv:8761/eureka
+      #defaultZone: http://localhost:8761/eureka
 
     registerWithEureka: true
     fetchRegistry: true
