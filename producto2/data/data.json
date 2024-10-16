@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nombre": "Producto 2-a",
+    "description": "Este es el primer ejemplo de producto 2",
+    "precio": 150.5,
+    "imagenUrl": "https://placehold.co/300x150/000000/FFFFFF?text=Producto2+Ejemplo-A=monserrat",
+    "user_id": 1
+  },
+  {
+    "id": 2,
+    "nombre": "Producto 2-b",
+    "description": "Este es el segundo ejemplo de producto 2",
+    "precio": 300.0,
+    "imagenUrl": "https://placehold.co/300x150/541321/e44769?text=Producto2+Ejemplo-B=monserrat",
+    "user_id": 1
+  },
+  {
+    "id": 3,
+    "nombre": "Producto 2-c",
+    "description": "Este es el tercer ejemplo de producto 2",
+    "precio": 50.0,
+    "imagenUrl": "https://placehold.co/300x150/0e4255/47b9e4?text=Producto2+Ejemplo-C=monserrat",
+    "user_id": 2
+  },
+  {
+    "id": 4,
+    "nombre": "Producto 2-d",
+    "description": "Este es el cuarto ejemplo de producto 2",
+    "precio": 1150.75,
+    "imagenUrl": "https://placehold.co/300x150/11d18d/0c543b?text=Producto2+Ejemplo-D=monserrat",
+    "user_id": 2
+  },
+  {
+    "id": 5,
+    "nombre": "Producto 2-e",
+    "description": "Este es el quinto ejemplo de producto 2",
+    "precio": 1000.0,
+    "imagenUrl": "https://placehold.co/300x150/9f649b/540c4f?text=Producto2+Ejemplo-E=monserrat",
+    "user_id": 3
+  }
+]

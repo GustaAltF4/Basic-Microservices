@@ -1,0 +1,36 @@
+[
+  {
+    "id": "1",
+    "nombre": "Producto 1-a",
+    "description": "Este es el primer ejemplo de producto 1",
+    "precio": 150.5,
+    "user_id": 1
+  },
+  {
+    "id": "2",
+    "nombre": "Producto 1-b",
+    "description": "Este es el segundo ejemplo de producto 1",
+    "precio": 300.0,
+    "user_id": 3
+  },
+  {
+    "id": "3",
+    "nombre": "Producto 1-c",
+    "description": "Este es el tercer ejemplo de producto 1",
+    "precio": 1250.0,
+    "user_id": 1
+  },
+  {
+    "id": "4",
+    "nombre": "Producto 1-d",
+    "description": "Este es el cuarto ejemplo de producto 1",
+    "precio": 500.20,
+    "user_id": 3
+  },
+  {
+    "id": "5",
+    "nombre": "Producto 1-e",
+    "description": "Este es el quinto ejemplo de un producto 1",
+    "precio": 600.0,
+    "user_id": 2
+  }]

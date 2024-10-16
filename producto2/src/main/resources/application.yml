@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: producto2
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-microserv:8761/eureka
+    registerWithEureka: true
+    fetchRegistry: true
+server:
+  port: 8002
+productos2:
+  json:
+    path: /producto2/data/data.json

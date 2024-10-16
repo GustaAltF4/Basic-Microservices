@@ -1,0 +1,94 @@
+#version: "3.8"
+services:
+  eureka-microserv:
+    image: eureka-microserv
+    container_name: eureka
+    build:
+      context: ./eureka
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+    networks:
+      - microserv-network
+#    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "wget --spider -q http://eureka-microserv:8761/actuator/health || exit 1" ]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+
+  gateway-microserv:
+    image: gateway-microserv
+    container_name: gateway
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+#      - eureka-microserv
+      eureka-microserv:
+        condition: service_healthy
+    networks:
+      - microserv-network
+#    restart: always
+#    entrypoint: sh -c "sleep 40 && java -jar /gateway/target/gateway-0.0.1-SNAPSHOT.jar"
+
+
+  producto1-microserv:
+    image: producto1-microserv
+    container_name: producto1
+    build:
+      context: ./producto1
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    depends_on:
+#      - eureka-microserv
+      eureka-microserv:
+        condition: service_healthy
+    networks:
+      - microserv-network
+    restart: always
+    entrypoint: sh -c "sleep 40 && java -jar /producto1/target/producto1-0.0.1-SNAPSHOT.jar"
+
+
+  producto2-microserv:
+    image: producto2-microserv
+    container_name: producto2
+    build:
+      context: ./producto2
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    depends_on:
+#      - eureka-microserv
+      eureka-microserv:
+        condition: service_healthy
+    networks:
+      - microserv-network
+#    restart: always
+    entrypoint: sh -c "sleep 40 && java -jar /producto2/target/producto2-0.0.1-SNAPSHOT.jar"
+
+
+  user-microserv:
+    image: user-microserv
+    container_name: usuario
+    build:
+      context: ./usuario
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    depends_on:
+#      - eureka-microserv
+      eureka-microserv:
+        condition: service_healthy
+    networks:
+      - microserv-network
+#    restart: always
+    entrypoint: sh -c "sleep 40 && java -jar /usuario/target/usuario-0.0.1-SNAPSHOT.jar"
+
+networks:
+  microserv-network:
+    driver: bridge

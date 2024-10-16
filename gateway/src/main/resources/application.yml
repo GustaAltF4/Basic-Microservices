@@ -1,0 +1,43 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-microserv:8761/eureka
+    registerWithEureka: true
+    fetchRegistry: true
+
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: usuario
+          uri: lb://usuario
+          predicates:
+            - Path=/user/**
+        - id: producto1
+          uri: lb://producto1
+          predicates:
+            - Path=/producto1/**
+        - id: producto2
+          uri: lb://producto2
+          predicates:
+            - Path=/producto2/**
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - url: /user/v3/api-docs
+        name: usuario
+      - url: /producto1/v3/api-docs
+        name: producto1
+      - url: /producto2/v3/api-docs
+        name: producto2
