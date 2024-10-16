@@ -1,0 +1,64 @@
+services:
+  - name: eureka-microserv
+    type: web
+    env:
+      - name: DOCKER
+    dockerfilePath: ./eureka/Dockerfile
+    buildContext: ./eureka
+    healthCheck:
+      type: tcp
+      path: "/actuator/health"
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    plan: free
+    port:
+      port: 8761
+
+  - name: gateway-microserv
+    type: web
+    env:
+      - name: DOCKER
+    dockerfilePath: ./gateway/Dockerfile
+    buildContext: ./gateway
+    plan: free
+    port:
+      port: 8080
+    dependsOn:
+      - eureka-microserv
+
+  - name: producto1-microserv
+    type: web
+    env:
+      - name: DOCKER
+    dockerfilePath: ./producto1/Dockerfile
+    buildContext: ./producto1
+    plan: free
+    port:
+      port: 8001
+    dependsOn:
+      - eureka-microserv
+
+  - name: producto2-microserv
+    type: web
+    env:
+      - name: DOCKER
+    dockerfilePath: ./producto2/Dockerfile
+    buildContext: ./producto2
+    plan: free
+    port:
+      port: 8002
+    dependsOn:
+      - eureka-microserv
+
+  - name: user-microserv
+    type: web
+    env:
+      - name: DOCKER
+    dockerfilePath: ./usuario/Dockerfile
+    buildContext: ./usuario
+    plan: free
+    port:
+      port: 8003
+    dependsOn:
+      - eureka-microserv
